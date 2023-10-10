@@ -58,8 +58,12 @@ public class MainService {
         return salesOrderRepository.findAllSalesOrderComplex00(salesOrderSearchOption,pageable);
     }
 
-    public Page<SalesOrderComplexDTO> getAllSalesOrderComplex04(Pageable pageable) {
-        return salesOrderRepository.findAllSalesOrderComplex04(pageable);
+    // JPQL에 개체를 파라미터로 전달하는 경우에 :criteria.column에서 .column에서 구문 오류가 발생한다.
+    // 개체의 .이 아닌 그냥 :param은 잘 인식된다.
+    // 향후 시간이 있을때 깊이 살펴볼 것
+    public Page<SalesOrderComplexDTO> getAllSalesOrderComplex04(SalesOrderSearchOption searchOption,Pageable pageable) {
+        return salesOrderRepository.findAllSalesOrderComplex04(searchOption.getMemberId(),pageable);
+//        return salesOrderRepository.findAllSalesOrderComplex04(searchOption,pageable);
     }
 
     public List<SalesOrderComplexDTO> getAllSalesOrderComplex01() {

@@ -1,11 +1,13 @@
 package com.skytree.skystarter.repository;
 
 import com.skytree.skystarter.dto.SalesOrderComplexDTO;
+import com.skytree.skystarter.dto.SalesOrderSearchOption;
 import com.skytree.skystarter.entity.SalesOrder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -43,6 +45,8 @@ public interface SalesOrderRepository extends JpaRepository<SalesOrder,Long>,Sal
                 inner join SalesOrderProduct salesOrderProduct on (salesOrder.salesorderId = salesOrderProduct.salesorderId)
                 inner join Product product on (product.productId = salesOrderProduct.productId)
                 inner join Member member on (member.memberId = salesOrder.memberId)
+                where member.memberId = :memberId
             """)
-    public Page<SalesOrderComplexDTO> findAllSalesOrderComplex04(Pageable pageable);
+    public Page<SalesOrderComplexDTO> findAllSalesOrderComplex04(@Param("memberId") long memberId, Pageable pageable);
+//    public Page<SalesOrderComplexDTO> findAllSalesOrderComplex04(@Param("option") SalesOrderSearchOption option, Pageable pageable);
 }

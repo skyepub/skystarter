@@ -78,8 +78,8 @@ public class MainController {
 
     // 복합Join의 결과를 담기위한 DTO를 만들고 이를 반환 - 2023.10.9 15:00에 성공
     @GetMapping("/salesorder/complex4")
-    public Page<SalesOrderComplexDTO> getAllSalesOrderComplex04(Pageable pageable) {
-        Page<SalesOrderComplexDTO> result = mainService.getAllSalesOrderComplex04(pageable);
+    public Page<SalesOrderComplexDTO> getAllSalesOrderComplex04(@ModelAttribute SalesOrderSearchOption salesOrderSearchOptio,Pageable pageable) {
+        Page<SalesOrderComplexDTO> result = mainService.getAllSalesOrderComplex04(salesOrderSearchOptio,pageable);
         return result;
     }
 
