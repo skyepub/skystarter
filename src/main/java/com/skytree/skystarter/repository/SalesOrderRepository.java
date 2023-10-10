@@ -11,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
+// 개체가 파라미터로 전달되는 @Query에 대한 매우 자세한 분석이 필요하다.
 public interface SalesOrderRepository extends JpaRepository<SalesOrder,Long>,SalesOrderRepositoryCustom {
     // JPQL의 theta join을 이용해서 연관성 없는 Entity를 join하고 결과를 DTO로 반환한다.
     @Query(value = """
