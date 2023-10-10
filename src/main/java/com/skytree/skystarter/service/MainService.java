@@ -2,7 +2,7 @@ package com.skytree.skystarter.service;
 
 import com.skytree.skystarter.dto.MemberDTO;
 import com.skytree.skystarter.dto.ProductDTO;
-import com.skytree.skystarter.dto.SalesOrderComplex01DTO;
+import com.skytree.skystarter.dto.SalesOrderComplexDTO;
 import com.skytree.skystarter.dto.SalesOrderSearchOption;
 import com.skytree.skystarter.entity.Member;
 import com.skytree.skystarter.entity.Product;
@@ -15,11 +15,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.expression.ExpressionException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -56,23 +54,23 @@ public class MainService {
         return salesOrderRepository.findAllSalesOrder();
     }
 
-    public Page<SalesOrderComplex01DTO> getAllSalesOrderComplex00(SalesOrderSearchOption salesOrderSearchOption, Pageable pageable) {
+    public Page<SalesOrderComplexDTO> getAllSalesOrderComplex00(SalesOrderSearchOption salesOrderSearchOption, Pageable pageable) {
         return salesOrderRepository.findAllSalesOrderComplex00(salesOrderSearchOption,pageable);
     }
 
-    public Page<SalesOrderComplex01DTO> getAllSalesOrderComplex04(Pageable pageable) {
+    public Page<SalesOrderComplexDTO> getAllSalesOrderComplex04(Pageable pageable) {
         return salesOrderRepository.findAllSalesOrderComplex04(pageable);
     }
 
-    public List<SalesOrderComplex01DTO> getAllSalesOrderComplex01() {
+    public List<SalesOrderComplexDTO> getAllSalesOrderComplex01() {
         return salesOrderRepository.findAllSalesOrderComplex01();
     }
 
-    public List<SalesOrderComplex01DTO> getAllSalesOrderComplex02() {
+    public List<SalesOrderComplexDTO> getAllSalesOrderComplex02() {
         return salesOrderRepository.findAllSalesOrderComplex02();
     }
 
-    public List<SalesOrderComplex01DTO> getAllSalesOrderComplex03() {
+    public List<SalesOrderComplexDTO> getAllSalesOrderComplex03() {
         return salesOrderRepository.findAllSalesOrderComplex03();
     }
 

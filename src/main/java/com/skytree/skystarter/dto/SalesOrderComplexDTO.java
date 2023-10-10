@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SalesOrderComplex01DTO {
+public class SalesOrderComplexDTO {
     private long salesorderId;
     private long memberId;
     private long productId;

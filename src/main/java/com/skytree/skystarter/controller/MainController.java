@@ -1,7 +1,7 @@
 package com.skytree.skystarter.controller;
 import com.skytree.skystarter.dto.MemberDTO;
 import com.skytree.skystarter.dto.ProductDTO;
-import com.skytree.skystarter.dto.SalesOrderComplex01DTO;
+import com.skytree.skystarter.dto.SalesOrderComplexDTO;
 import com.skytree.skystarter.dto.SalesOrderSearchOption;
 import com.skytree.skystarter.entity.Member;
 import com.skytree.skystarter.entity.SalesOrder;
@@ -10,15 +10,10 @@ import com.skytree.skystarter.service.MainService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 // 2023년 10월7일~10일 (주로 8일,9일 양일간 모든 케이스를 커버하는 예제 완성)
 
@@ -58,33 +53,33 @@ public class MainController {
 
     // 복합Join의 결과를 담기위한 DTO를 만들고 이를 반환 - 2023.10.9 15:00에 성공
     @GetMapping("/salesorder/complex1")
-    public List<SalesOrderComplex01DTO> getAllSalesOrderComplex01() {
+    public List<SalesOrderComplexDTO> getAllSalesOrderComplex01() {
         return mainService.getAllSalesOrderComplex01();
     }
 
     // 복합Join의 결과를 담기위한 DTO를 만들고 이를 반환 - 2023.10.9 15:00에 성공
     @GetMapping("/salesorder/complex2")
-    public List<SalesOrderComplex01DTO> getAllSalesOrderComplex02() {
+    public List<SalesOrderComplexDTO> getAllSalesOrderComplex02() {
         return mainService.getAllSalesOrderComplex02();
     }
 
     // 복합Join의 결과를 담기위한 DTO를 만들고 이를 반환 - 2023.10.9 15:00에 성공
     @GetMapping("/salesorder/complex3")
-    public List<SalesOrderComplex01DTO> getAllSalesOrderComplex03() {
+    public List<SalesOrderComplexDTO> getAllSalesOrderComplex03() {
         return mainService.getAllSalesOrderComplex03();
     }
 
     // 복합Join의 결과를 담기위한 DTO를 만들고 이를 반환 - 2023.10.9 15:00에 성공
     @GetMapping("/salesorder/complex0")
-    public Page<SalesOrderComplex01DTO> getAllSalesOrderComplex00(@ModelAttribute SalesOrderSearchOption salesOrderSearchOption, Pageable pageable) {
-        Page<SalesOrderComplex01DTO> result = mainService.getAllSalesOrderComplex00(salesOrderSearchOption,pageable);
+    public Page<SalesOrderComplexDTO> getAllSalesOrderComplex00(@ModelAttribute SalesOrderSearchOption salesOrderSearchOption, Pageable pageable) {
+        Page<SalesOrderComplexDTO> result = mainService.getAllSalesOrderComplex00(salesOrderSearchOption,pageable);
         return result;
     }
 
     // 복합Join의 결과를 담기위한 DTO를 만들고 이를 반환 - 2023.10.9 15:00에 성공
     @GetMapping("/salesorder/complex4")
-    public Page<SalesOrderComplex01DTO> getAllSalesOrderComplex04(Pageable pageable) {
-        Page<SalesOrderComplex01DTO> result = mainService.getAllSalesOrderComplex04(pageable);
+    public Page<SalesOrderComplexDTO> getAllSalesOrderComplex04(Pageable pageable) {
+        Page<SalesOrderComplexDTO> result = mainService.getAllSalesOrderComplex04(pageable);
         return result;
     }
 

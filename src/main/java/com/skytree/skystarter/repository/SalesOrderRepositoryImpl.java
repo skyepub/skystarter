@@ -4,14 +4,13 @@
     import com.querydsl.core.types.Projections;
     import com.querydsl.core.types.dsl.BooleanExpression;
     import com.querydsl.jpa.impl.JPAQueryFactory;
-    import com.skytree.skystarter.dto.SalesOrderComplex01DTO;
+    import com.skytree.skystarter.dto.SalesOrderComplexDTO;
     import com.skytree.skystarter.dto.SalesOrderSearchOption;
     import com.skytree.skystarter.entity.SalesOrder;
     import lombok.RequiredArgsConstructor;
     import org.springframework.data.domain.Page;
     import org.springframework.data.domain.PageImpl;
     import org.springframework.data.domain.Pageable;
-    import org.springframework.data.jpa.repository.Query;
 
     import java.util.List;
 
@@ -39,9 +38,9 @@
         //    inner join member m on (m.member_id = so.member_id)
 
     // Projections이 Contructor인 경우 완전히 생성자와 같아야 되어서 필드의 순서가 바뀌어도 안되고 빠져서도 안된다.
-        public List<SalesOrderComplex01DTO> findAllSalesOrderComplex01() {
-            List<SalesOrderComplex01DTO> result = queryFactory
-                    .select(Projections.constructor(SalesOrderComplex01DTO.class
+        public List<SalesOrderComplexDTO> findAllSalesOrderComplex01() {
+            List<SalesOrderComplexDTO> result = queryFactory
+                    .select(Projections.constructor(SalesOrderComplexDTO.class
                             ,salesOrder.salesorderId
                             ,salesOrder.memberId
                             ,salesOrderProduct.productId
@@ -60,17 +59,17 @@
         }
 
         // Projections이 fields인 경우 필드의 순서가 바뀌어도 되고 심지어 하나 빠져도 에러가 생기지 않는다.
-        public List<SalesOrderComplex01DTO> findAllSalesOrderComplex02() {
-            List<SalesOrderComplex01DTO> result = queryFactory
-                    .select(Projections.fields(SalesOrderComplex01DTO.class
-                            ,salesOrder.salesorderId
-                            ,salesOrder.memberId
-                            ,salesOrderProduct.productId
-                            ,salesOrder.createDate
-                            ,member.name
-                            ,salesOrderProduct.quantity
-                            ,product.name
-                            ,product.price
+        public List<SalesOrderComplexDTO> findAllSalesOrderComplex02() {
+            List<SalesOrderComplexDTO> result = queryFactory
+                    .select(Projections.fields(SalesOrderComplexDTO.class
+                            ,salesOrder.salesorderId.as("salesorderId")
+                            ,salesOrder.memberId.as("memberId")
+                            ,salesOrderProduct.productId.as("productId")
+                            ,salesOrder.createDate.as("createDate")
+                            ,member.name.as("memberName")
+                            ,product.name.as("productName")
+                            ,product.price.as("price")
+                            ,salesOrderProduct.quantity.as("quantity")
                     ))
                     .from(salesOrder)
                     .innerJoin(salesOrderProduct).on(salesOrder.salesorderId.eq(salesOrderProduct.salesorderId))
@@ -81,9 +80,9 @@
         }
 
 
-        public Page<SalesOrderComplex01DTO> findAllSalesOrderComplex00(SalesOrderSearchOption salesOrderSearchOption, Pageable pageable){
-            QueryResults<SalesOrderComplex01DTO> result = queryFactory
-                    .select(Projections.constructor(SalesOrderComplex01DTO.class
+        public Page<SalesOrderComplexDTO> findAllSalesOrderComplex00(SalesOrderSearchOption salesOrderSearchOption, Pageable pageable){
+            QueryResults<SalesOrderComplexDTO> result = queryFactory
+                    .select(Projections.constructor(SalesOrderComplexDTO.class
                             ,salesOrder.salesorderId
                             ,salesOrder.memberId
                             ,salesOrderProduct.productId

@@ -1,6 +1,6 @@
 package com.skytree.skystarter.repository;
 
-import com.skytree.skystarter.dto.SalesOrderComplex01DTO;
+import com.skytree.skystarter.dto.SalesOrderComplexDTO;
 import com.skytree.skystarter.entity.SalesOrder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,7 +12,7 @@ import java.util.List;
 public interface SalesOrderRepository extends JpaRepository<SalesOrder,Long>,SalesOrderRepositoryCustom {
     // JPQL의 theta join을 이용해서 연관성 없는 Entity를 join하고 결과를 DTO로 반환한다.
     @Query(value = """
-            select new com.skytree.skystarter.dto.SalesOrderComplex01DTO(
+            select new com.skytree.skystarter.dto.SalesOrderComplexDTO(
                  salesOrder.salesorderId 
                 ,salesOrder.memberId
                 ,salesOrderProduct.productId
@@ -26,11 +26,11 @@ public interface SalesOrderRepository extends JpaRepository<SalesOrder,Long>,Sal
                 inner join Product product on (product.productId = salesOrderProduct.productId)
                 inner join Member member on (member.memberId = salesOrder.memberId)
             """)
-    public List<SalesOrderComplex01DTO> findAllSalesOrderComplex03();
+    public List<SalesOrderComplexDTO> findAllSalesOrderComplex03();
 
     // JPQL의 theta join을 이용해서 연관성 없는 Entity를 join하고 결과를 DTO로 반환한다.
     @Query(value = """
-            select new com.skytree.skystarter.dto.SalesOrderComplex01DTO(
+            select new com.skytree.skystarter.dto.SalesOrderComplexDTO(
                  salesOrder.salesorderId 
                 ,salesOrder.memberId
                 ,salesOrderProduct.productId
@@ -44,5 +44,5 @@ public interface SalesOrderRepository extends JpaRepository<SalesOrder,Long>,Sal
                 inner join Product product on (product.productId = salesOrderProduct.productId)
                 inner join Member member on (member.memberId = salesOrder.memberId)
             """)
-    public Page<SalesOrderComplex01DTO> findAllSalesOrderComplex04(Pageable pageable);
+    public Page<SalesOrderComplexDTO> findAllSalesOrderComplex04(Pageable pageable);
 }
