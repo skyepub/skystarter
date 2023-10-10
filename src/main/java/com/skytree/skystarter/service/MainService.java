@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+// 향후 상당히 자세한 주석과 다큐먼트를 붙인다.
 @Service
 @RequiredArgsConstructor
 public class MainService {
