@@ -1,14 +1,15 @@
 package com.skytree.skystarter.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Getter
-@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Builder
 @Table(name = "salesorder_product")
 public class SalesOrderProduct {
     @Id

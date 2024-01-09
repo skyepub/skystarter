@@ -5,11 +5,10 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 
-@Getter
-@Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
+@Builder
 public class SalesOrderComplexDTO {
     private long salesorderId;
     private long memberId;

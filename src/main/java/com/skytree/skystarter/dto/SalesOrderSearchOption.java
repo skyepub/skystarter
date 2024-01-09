@@ -2,10 +2,9 @@ package com.skytree.skystarter.dto;
 
 import lombok.*;
 
-@Getter
-@Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Data
 @Builder
 public class SalesOrderSearchOption {
     Long memberId;

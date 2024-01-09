@@ -2,11 +2,10 @@ package com.skytree.skystarter.dto;
 
 import lombok.*;
 
-@Getter
-@Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
+@Builder
 public class MemberDTO {
     private long memberId;
     private String name;

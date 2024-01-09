@@ -2,11 +2,10 @@ package com.skytree.skystarter.dto;
 
 import lombok.*;
 
-@Getter
-@Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
+@Builder
 public class ProductDTO {
     private long productId;
     private String name;
