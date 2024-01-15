@@ -31,11 +31,7 @@ public class MainService {
     public MemberDTO getMemberById(long memberId) throws NotFoundException {
         Member member = memberRepository.findById(memberId)
                 .orElseThrow(()->new NotFoundException("memberId로 검색 실패"));
-        MemberDTO memberDTO = MemberDTO.builder()
-                .memberId(member.getMemberId())
-                .email(member.getEmail())
-                .name(member.getName())
-                .build();
+        MemberDTO memberDTO = member.toDTO();
         return memberDTO;
     }
 

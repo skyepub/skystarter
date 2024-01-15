@@ -10,4 +10,5 @@ public class MemberDTO {
     private long memberId;
     private String name;
     private String email;
+    private String password;
 }
