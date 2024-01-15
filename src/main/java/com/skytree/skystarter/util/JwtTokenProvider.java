@@ -19,10 +19,10 @@ import java.util.Map;
 @ConfigurationProperties(prefix = "jwt")
 public class JwtTokenProvider {
 
-    @Value("mako2122")
+    @Value("${jwt.secret}")
     private String jwtSecret;
 
-    @Value("36000")
+    @Value("${jwt.expiration}")
     private long jwtExpiration;
 
     public String generateToken(String username) {

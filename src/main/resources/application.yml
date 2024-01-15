@@ -4,6 +4,7 @@ spring:
     username: root
     password: mako2122
     url: jdbc:mysql://home.skyepub.net:3306/study
-  jwt:
-    secret: mako2122
-    expiration: 3600000
+
+jwt:
+  secret: mako2122
+  expiration: 36000
