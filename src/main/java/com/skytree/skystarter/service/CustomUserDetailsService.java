@@ -15,26 +15,31 @@ import java.util.Arrays;
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
+    // MemberRepository 인스턴스에 대한 참조
     private final MemberRepository memberRepository;
 
+    // 생성자를 통해 MemberRepository 주입
     @Autowired
     public CustomUserDetailsService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
 
+    // loadUserByUsername 메소드 오버라이드
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // 여기서 사용자 정보를 데이터베이스에서 조회하고 UserDetails로 변환하여 반환
+        // 데이터베이스에서 사용자 정보를 조회
         Member member = memberRepository.findByEmail(username);
         if (member == null) {
+            // 사용자 정보가 없는 경우 UsernameNotFoundException 예외 발생
             throw new UsernameNotFoundException("User not found with username: " + username);
         }
 
-        // Member 엔티티 정보를 UserDetails로 변환하여 반환하는 코드 작성
-        // 예를 들어, 아래와 같이 UserDetails를 생성할 수 있습니다.
-         UserDetails userDetails = new User(member.getEmail(), member.getPassword(), Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
+        // 조회된 Member 객체를 UserDetails 객체로 변환
+        // 이 예제에서는 사용자 이름, 비밀번호 및 권한을 포함한 UserDetails 객체를 생성
+        UserDetails userDetails = new User(member.getEmail(), member.getPassword(),
+                Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
 
-        // 실제 코드에 따라 UserDetails를 생성하고 반환해야 합니다.
+        // 생성된 UserDetails 객체 반환
         return userDetails;
     }
 }
